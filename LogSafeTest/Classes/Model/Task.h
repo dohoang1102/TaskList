@@ -6,8 +6,14 @@
 //  Copyright (c) 2012 Hot Apps Factroy. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
 @interface Task : NSObject
+
+- (id)initWithId:(NSUInteger)newID title:(NSString *)title;
+
+- (void)titleChanged:(NSString *)newTitle;
+- (NSString *)currentTitle;
+
+- (NSUInteger)currentId;
 
 @end

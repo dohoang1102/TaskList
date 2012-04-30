@@ -3,27 +3,37 @@
 //  LogSafeTest
 //
 //  Created by Clément Rousselle on 4/30/12.
-//  Copyright (c) 2012 Hot Apps Factroy. All rights reserved.
+//  Copyright (c) 2012 .All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "MainViewController.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, retain) MainViewController *mainController;
+
+@end
 
 @implementation AppDelegate
-
+@synthesize mainController, navController;
 @synthesize window = _window;
 
 - (void)dealloc
 {
     [_window release];
+    [mainController release];
+    [navController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    [self.window addSubview:navController.view];
+    
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

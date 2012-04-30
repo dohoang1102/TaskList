@@ -7,24 +7,30 @@
 //
 
 #import "AddViewController.h"
+#import "Task.h"
 
 @implementation AddViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    NSUInteger currentID;
+}
+
+@synthesize numberLabel;
+@synthesize textField;
+@synthesize delegate;
+
+- (id)init
+{
+    self = [super initWithNibName:nil bundle:nil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+- (void)dealloc {
+    [numberLabel release];
+    [textField release];
+    [super dealloc];
 }
 
 #pragma mark - View lifecycle
@@ -32,20 +38,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addTouched)]autorelease];
+    
+    currentID = [delegate currentTaskID];
+    self.numberLabel.text = [NSString stringWithFormat:NSLocalizedString(@"AddViewController.idText", nil), currentID];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [self setNumberLabel:nil];
+    [self setTextField:nil];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (void)addTouched
 {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    [delegate taskAdded:[[[Task alloc]initWithId:currentID title:self.textField.text]autorelease]];
+    
+    //back to previous controller
+    [textField resignFirstResponder];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end

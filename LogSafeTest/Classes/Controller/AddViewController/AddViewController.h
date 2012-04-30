@@ -6,8 +6,23 @@
 //  Copyright (c) 2012 Hot Apps Factroy. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@protocol AddViewControllerDelegate;
+
+@class Task;
 
 @interface AddViewController : UIViewController
+
+@property (retain, nonatomic) IBOutlet UILabel *numberLabel;
+@property (retain, nonatomic) IBOutlet UITextField *textField;
+
+@property (nonatomic, assign) id<AddViewControllerDelegate> delegate;
+
+@end
+
+
+@protocol AddViewControllerDelegate <NSObject>
+
+- (void)taskAdded:(Task *)t;
+- (NSUInteger)currentTaskID;
 
 @end

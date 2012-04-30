@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  LogSafeTest
+
+  Created by Clément Rousselle on 4/30/12.
+  Copyright (c) 2012 . All rights reserved.
+*/
+
+"MainViewController.title" = "LogSafe";
+"AddViewController.idText" = "Please enter informations for task n°%d";
