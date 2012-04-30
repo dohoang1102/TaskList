@@ -17,6 +17,8 @@
 
 @property (nonatomic, assign) id<AddViewControllerDelegate> delegate;
 
+- (IBAction)textDidChanged:(id)sender;
+
 @end
 
 

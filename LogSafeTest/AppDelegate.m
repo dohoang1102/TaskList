@@ -29,9 +29,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     [self.window addSubview:navController.view];
-    
     [self.window makeKeyAndVisible];
     
     return YES;

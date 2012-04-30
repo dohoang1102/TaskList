@@ -8,3 +8,4 @@
 
 "MainViewController.title" = "LogSafe";
 "AddViewController.idText" = "Please enter informations for task n°%d";
+"AddViewController.title"  = "New Task";

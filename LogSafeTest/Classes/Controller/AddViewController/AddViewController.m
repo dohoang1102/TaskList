@@ -38,8 +38,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.title  = NSLocalizedString(@"AddViewController.title", nil);
 
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc]initWithTitle:@"Add" style:UIBarButtonItemStyleDone target:self action:@selector(addTouched)]autorelease];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
+    [self.textField addTarget:self action:@selector(textDidChanged:) forControlEvents:UIControlEventEditingChanged];
     
     currentID = [delegate currentTaskID];
     self.numberLabel.text = [NSString stringWithFormat:NSLocalizedString(@"AddViewController.idText", nil), currentID];
@@ -61,5 +65,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)textDidChanged:(id)sender {
+    self.navigationItem.rightBarButtonItem.enabled = ![textField.text isEqualToString:@""];
+}
 
 @end
